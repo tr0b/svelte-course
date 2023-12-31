@@ -1,10 +1,18 @@
 <script>
-  let count = 0
-  const increment = () => {
-    count += 1
-  }
+    export let maxCount = 10;
+    export let initialCount;
+    let count = initialCount;
+    $: counterText = `Count is now ${count}`;
+
+    const increment = () => {
+        if (count === maxCount) return;
+        
+        count += 1;
+    };
 </script>
 
+<h2>{counterText}</h2>
+
 <button on:click={increment}>
-  count is {count}
+    Count is now: {count}
 </button>
